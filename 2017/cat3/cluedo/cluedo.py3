@@ -39,8 +39,8 @@ for testgeval in range(1, 1+int(input())):
             uitgeslotenSpelers = list(spelers)
             uitgeslotenSpelers.remove(s)
         
-        #print("uitgesloten spelers:", uitgeslotenSpelers)
-        print()
+        # print("uitgesloten spelers:", uitgeslotenSpelers)
+        # print()
 
         for speler in uitgeslotenSpelers:
             #print(speler, gegevens[speler])
@@ -53,6 +53,27 @@ for testgeval in range(1, 1+int(input())):
 
     print()
     print(30*'-')
+
+    alleMogelijkeItems = set()
+    for speler in range(1, 5):
+        alleMogelijkeItems = set.union(set(gegevens[speler][0]), alleMogelijkeItems)
+        alleMogelijkeItems = set.union(set(gegevens[speler][1]), alleMogelijkeItems)
+        alleMogelijkeItems = set.union(set(gegevens[speler][2]), alleMogelijkeItems)
+    
+    count = 0
+    maxCount = len(alleMogelijkeItems)
+    while(count < maxCount):
+        print("try:", count)
+        for item in alleMogelijkeItems:
+            freq = 0
+            for speler in range(1, 5):
+                if item in gegevens[speler][0] or item in gegevens[speler][1] or item in gegevens[speler][2]: freq += 1
+            
+            print(item, freq)
+        count += 1
+
+
+
     for k, v in gegevens.items():
         print(k, v)
         print()
